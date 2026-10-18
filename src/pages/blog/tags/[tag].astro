@@ -1,0 +1,61 @@
+---
+import { type CollectionEntry, getCollection } from "astro:content";
+import PageLayout from "@layouts/PageLayout.astro";
+import Container from "@components/Container.astro";
+import ArrowCard from "@components/ArrowCard.astro";
+import BackToPrev from "@components/BackToPrev.astro";
+import { slugifyTag } from "@lib/utils";
+
+type BlogPost = CollectionEntry<"blog">;
+
+export async function getStaticPaths() {
+  const posts = (await getCollection("blog"))
+    .filter(post => !post.data.draft)
+    .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+  const tagPages = new Map<string, { tag: string; posts: BlogPost[] }>();
+
+  for (const post of posts) {
+    for (const tag of post.data.tags ?? []) {
+      const slug = slugifyTag(tag);
+      if (!slug) {
+        throw new Error(`Tag "${tag}" tidak menghasilkan slug URL yang valid.`);
+      }
+
+      const tagPage = tagPages.get(slug) ?? { tag, posts: [] };
+      tagPage.posts.push(post);
+      tagPages.set(slug, tagPage);
+    }
+  }
+
+  return [...tagPages].map(([tagSlug, tagPage]) => ({
+    params: { tag: tagSlug },
+    props: tagPage,
+  }));
+}
+
+type Props = {
+  tag: string;
+  posts: BlogPost[];
+};
+
+const { tag, posts } = Astro.props;
+---
+
+<PageLayout title={`Tag: ${tag}`} description={`Kumpulan tulisan dengan tag ${tag}.`}>
+  <Container>
+    <div class="space-y-8">
+      <section class="animate space-y-6">
+        <h1 class="font-semibold text-black dark:text-white">
+          Tulisan dengan tag: {tag}
+        </h1>
+        <ul class="flex flex-col gap-4">
+          {posts.map(post => (
+            <li>
+              <ArrowCard entry={post} />
+            </li>
+          ))}
+        </ul>
+      </section>
+    </div>
+  </Container>
+</PageLayout>

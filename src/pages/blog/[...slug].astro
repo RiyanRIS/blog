@@ -3,8 +3,9 @@ import { type CollectionEntry, getCollection } from "astro:content";
 import PageLayout from "@layouts/PageLayout.astro";
 import Container from "@components/Container.astro";
 import FormattedDate from "@components/FormattedDate.astro";
-import { readingTime } from "@lib/utils";
+import { readingTime, slugifyTag } from "@lib/utils";
 import BackToPrev from "@components/BackToPrev.astro";
+import Link from "@components/Link.astro";
 
 export async function getStaticPaths() {
   const posts = (await getCollection("blog"))
@@ -23,11 +24,6 @@ const { Content } = await post.render();
 
 <PageLayout title={post.data.title} description={post.data.description}>
   <Container>
-    <div class="animate">
-      <BackToPrev href="/blog">
-        Back to blog
-      </BackToPrev>
-    </div>
     <div class="space-y-1 my-10">
       <div class="animate flex items-center gap-1.5">
         <div class="font-base text-sm">
@@ -41,9 +37,25 @@ const { Content } = await post.render();
       <div class="animate text-2xl font-semibold text-black dark:text-white">
         {post.data.title}
       </div>
+      {post.data.tags && post.data.tags.length > 0 && (
+        <nav class="animate flex flex-wrap gap-2 pt-2" aria-label="Tag tulisan">
+          {post.data.tags.map(tag => (
+            <Link href={`/blog/tags/${slugifyTag(tag)}`} underline={false}>
+              <span class="inline-block rounded border border-black/15 px-2 py-1 text-sm dark:border-white/20">
+                {tag}
+              </span>
+            </Link>
+          ))}
+        </nav>
+      )}
     </div>
     <article class="animate">
       <Content />
     </article>
   </Container>
+  <div slot="back-link" class="animate">
+    <BackToPrev href="/blog">
+      Kembali ke blog
+    </BackToPrev>
+  </div>
 </PageLayout>

@@ -13,7 +13,7 @@ const { title, description } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="id">
   <head>
     <Head title={`${title} | ${SITE.NAME}`} description={description} />
   </head>
@@ -22,6 +22,8 @@ const { title, description } = Astro.props;
     <main>
       <slot />
     </main>
-    <Footer />
+    <Footer>
+      <slot name="back-link" slot="back-link" />
+    </Footer>
   </body>
 </html>

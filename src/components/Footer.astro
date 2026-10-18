@@ -7,6 +7,9 @@ import BackToTop from "@components/BackToTop.astro";
 <footer class="animate">
   <Container>
     <div class="relative">
+      <div class="absolute left-0 -top-20">
+        <slot name="back-link" />
+      </div>
       <div class="absolute right-0 -top-20">
         <BackToTop />
       </div>
@@ -18,7 +21,7 @@ import BackToTop from "@components/BackToTop.astro";
       <div class="flex flex-wrap gap-1 items-center">
         <button
           id="light-theme-button"
-          aria-label="Light theme"
+          aria-label="Tema terang"
           class="group size-8 flex items-center justify-center rounded-full"
         >
           <svg
@@ -46,7 +49,7 @@ import BackToTop from "@components/BackToTop.astro";
         </button>
         <button
           id="dark-theme-button"
-          aria-label="Dark theme"
+          aria-label="Tema gelap"
           class="group size-8 flex items-center justify-center rounded-full"
         >
           <svg
@@ -66,7 +69,7 @@ import BackToTop from "@components/BackToTop.astro";
         </button>
         <button
           id="system-theme-button"
-          aria-label="System theme"
+          aria-label="Ikuti tema sistem"
           class="group size-8 flex items-center justify-center rounded-full"
         >
           <svg
