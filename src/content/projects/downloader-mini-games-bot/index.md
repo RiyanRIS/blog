@@ -2,8 +2,8 @@
 title: "🤖 Downloader & Mini Games Bot"
 description: "bot Telegram serbaguna berbasis komunitas yang menggabungkan fitur **pengunduh media multi-platform**, **pencatatan keuangan cerdas berbasis AI (Google Gemini)**, **arena permainan interaktif**."
 date: "2026-08-15"
-demoURL: "https://wabot.riyanris.my"
-repoURL: "https://github.com/riyanris"
+demoURL: "https://t.me/ivy_your_assistant_bot"
+repoURL: "https://github.com/riyanris/downloader_media_bot"
 ---
 
 **STB Downloader Bot** adalah bot Telegram serbaguna berbasis komunitas yang menggabungkan fitur **pengunduh media multi-platform**, **pencatatan keuangan cerdas berbasis AI (Google Gemini)**, **arena permainan interaktif**, dan **sistem masukan/lapor kendala dua arah**, yang dioptimalkan secara khusus untuk berjalan stabil pada perangkat hemat daya (seperti TV Box / STB ex-IndiHome **HG680-P**, **B860H** berbasis Armbian/Debian Linux ARM64) maupun server VPS x86_64.
@@ -134,7 +134,7 @@ repoURL: "https://github.com/riyanris"
 
 ### 2. Kloning Repositori & Pasang Dependensi
 ```bash
-git clone https://github.com/username/downloader_media_bot.git
+git clone https://github.com/riyanris/downloader_media_bot.git
 cd downloader_media_bot
 npm install
 ```

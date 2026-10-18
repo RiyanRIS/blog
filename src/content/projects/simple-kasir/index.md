@@ -3,7 +3,7 @@ title: "Simple Kasir"
 description: "Portofolio sistem manajemen kasir."
 date: "2026-10-11"
 demoURL: "https://simple-pos.riyanris.my"
-repoURL: "https://github.com/riyanris"
+repoURL: "https://github.com/riyanris/react-simple-pos"
 ---
 
 # 📖 Panduan Singkat Pemakaian Sistem Kasir (Penyetan POS)

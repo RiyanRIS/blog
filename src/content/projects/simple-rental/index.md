@@ -3,7 +3,7 @@ title: "Simple Rental"
 description: "Portofolio sistem rental dan pemesanan online."
 date: "Oct 18 2026"
 demoURL: "https://simple-rental.riyanris.my.id"
-repoURL: "https://github.com/riyanris"
+repoURL: "https://github.com/riyanris/simple-rental"
 ---
 
 **JogjaMotor** adalah aplikasi web operasional rental motor wisata terpadu yang menghubungkan proses pemesanan tamu secara mandiri (*self-service booking*), operasional lapangan kurir (*mobile digital inspection & handover*), serta administrasi bisnis dan rekapitulasi keuangan.
